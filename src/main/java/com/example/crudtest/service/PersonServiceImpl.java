@@ -17,11 +17,7 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
-	public Person save(String firstname, String lastname, String occupation) {
-		Person person = new Person();
-		person.setFirstname(firstname);
-		person.setLastname(lastname);
-		person.setOccupation(occupation);
+	public Person save(Person person) {
 		return personRepository.save(person);
 	}
 

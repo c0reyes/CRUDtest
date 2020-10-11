@@ -5,7 +5,7 @@ import com.example.crudtest.model.Person;
 public interface PersonService {
 	Iterable<Person> findAll();
 	
-	Person save(String firstname, String lastname, String occupation);
+	Person save(Person person);
 	
 	void deleteById(Person person);
 	

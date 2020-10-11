@@ -20,7 +20,7 @@
 		          <span aria-hidden="true">&times;</span>
 		        </button>
 		      </div>
-		      <form method="post">
+		      <form action="/create" method="post">
 			      <div class="modal-body">
 					  <div class="form-group">
 					    <label for="firstname">Firstname</label>
@@ -52,14 +52,10 @@
   					Add Person
 				</button>
 				</div>
-				<div class="alert alert-success" role="alert" th:if="${added != ''}" th:style="'display: show; margin-top: 50px;'" style="display: none;">
-				  Person saved
-				</div>
-				<div class="alert alert-danger" role="alert" th:if="${added == null}" th:style="'display: show; margin-top: 50px;'" style="display: none;">
-				  Person not saved
+				<div th:if="${msg != null}" th:classappend="${msg.classname}" th:text="${msg.text}" th:style="'display: show; margin-top: 50px;'" role="alert" class="alert" style="display: none;">
 				</div>
 	      		<h2 class="mt-5">Search</h2>
-	      		<form>
+	      		<form action="/">
 	  				<div class="form-row">
 	    				<div class="form-group col-md-6">
 	      					<label for="firstname">Firstname</label>
@@ -91,8 +87,10 @@
 	    						<td th:text="${per.firstname}"></td>
 	    						<td th:text="${per.lastname}"></td>
 	    						<td th:text="${per.occupation}"></td>
-	    						<td><button type="submit" class="btn btn-info">Edit</button></td>
-	    						<td><button type="submit" class="btn btn-danger">Delete</button></td>
+	    						<td style="text-align: center; vertical-align: middle;"><button type="submit" class="btn btn-info">Edit</button></td>
+	    						<td style="text-align: center; vertical-align: middle;">
+	    							<a th:href="'/delete?id=' + ${per.id}"><button type="submit" class="btn btn-danger">Delete</button></a>
+	    						</td>
 	    					</tr>
 	    				</th:block>
 	    			</tbody>
