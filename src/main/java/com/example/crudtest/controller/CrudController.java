@@ -34,7 +34,7 @@ public class CrudController {
 		personService.save(new Person(firstname, lastname, occupation));
 		
 		Map<String, String> msg = new HashMap<String, String>();
-		msg.put("classname","alert-success"); // alert-danger
+		msg.put("classname","alert-success"); 
 		msg.put("text","Person saved");
 		model.addAttribute("msg", msg);
 		
@@ -43,13 +43,18 @@ public class CrudController {
 	
 	@GetMapping("/delete")
 	public String detele(@RequestParam(name = "id", required = false, defaultValue = "") long id, Model model) {
-		personService.deleteById(new Person(id));
-		
 		Map<String, String> msg = new HashMap<String, String>();
-		msg.put("classname","alert-success"); // alert-danger
-		msg.put("text","Person deleted");
-		model.addAttribute("msg", msg);
-		
+		try {
+			personService.deleteById(new Person(id));
+			
+			msg.put("classname","alert-success"); 
+			msg.put("text","Person deleted");
+			model.addAttribute("msg", msg);
+		}catch(Exception exc) {
+			msg.put("classname","alert-danger"); 
+			msg.put("text","Person not deleted, exception: " + exc.toString());
+			model.addAttribute("msg", msg);
+		}
 		return "index";
 	}
 	
@@ -61,7 +66,7 @@ public class CrudController {
 		personService.save(new Person(id, firstname, lastname, occupation));
 		
 		Map<String, String> msg = new HashMap<String, String>();
-		msg.put("classname","alert-success"); // alert-danger
+		msg.put("classname","alert-success"); 
 		msg.put("text","Person updated");
 		model.addAttribute("msg", msg);
 		
