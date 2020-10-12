@@ -45,7 +45,7 @@ pipeline {
         stage('Remove Unused docker image') {
             agent { label 'docker' }
             steps{
-                sh "docker rmi registry:5043/crudtest:crudtest"
+                sh "docker rmi registry:5043/crudtest:latest"
             }
         }
     }
