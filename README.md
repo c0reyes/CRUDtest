@@ -1,6 +1,6 @@
 # CRUDtest example
 
-Example for test CRUD.
+Example for testing CRUD in the cluster.
 
 To testing the [Environment develop](https://github.com/c0reyes/envdev).
 
@@ -9,7 +9,7 @@ To testing the [Environment develop](https://github.com/c0reyes/envdev).
 Clone to your machine, if you want or use the repository from GitHub. Create new repository on Gitea.
 
 ```
-git clone https://github.com/c0reyes/crudtest.git
+git clone https://github.com/c0reyes/CRUDtest.git
 ```
 
 Change remote url to local Gitea.
