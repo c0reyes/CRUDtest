@@ -22,6 +22,25 @@ public class Person {
 	@Column(length = 50)
 	private String occupation;
 	
+	public Person() {}
+	
+	public Person(long id) {
+		this.id = id;
+	}
+	
+	public Person(String firstname, String lastname, String occupation) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.occupation = occupation;
+	}
+	
+	public Person(long id, String firstname, String lastname, String occupation) {
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.occupation = occupation;
+	}
+	
 	public long getId() {
 		return id;
 	}

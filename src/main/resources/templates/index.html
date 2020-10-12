@@ -44,6 +44,40 @@
 		  </div>
 		</div>
 		
+		<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Update Person</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <form action="/update" method="post">
+			      <div class="modal-body">
+					  <div class="form-group">
+					    <label for="firstname">Firstname</label>
+					    <input type="text" class="form-control" id="ufirstname" name="firstname" placeholder="firstname">
+					  </div>
+					  <div class="form-group">
+					    <label for="lastname">Lastname</label>
+					    <input type="text" class="form-control" id="ulastname" name="lastname" placeholder="lastname">
+					  </div>
+					  <div class="form-group">
+					    <label for="occupation">Occupation</label>
+					    <input type="text" class="form-control" id="uoccupation" name="occupation" placeholder="occupation">
+					  </div>
+			      </div>
+			      <div class="modal-footer">
+			        <input type="hidden" id="uid" name="id">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        <button type="submit" class="btn btn-primary">Save</button>
+			      </div>
+		      </form>
+		    </div>
+		  </div>
+		</div>
+		
 		<!-- Begin page content -->
     	<main role="main" class="container">
     		<div class="container px-3 py-3">
@@ -83,13 +117,13 @@
 	  				</thead>
 	  				<tbody>
 	    				<th:block th:if="${person != null}" th:each="per: ${person}">
-	    					<tr>
+	    					<tr th:id="${per.id}">
 	    						<td th:text="${per.firstname}"></td>
 	    						<td th:text="${per.lastname}"></td>
 	    						<td th:text="${per.occupation}"></td>
-	    						<td style="text-align: center; vertical-align: middle;"><button type="submit" class="btn btn-info">Edit</button></td>
+	    						<td style="text-align: center; vertical-align: middle;"><button type="button" class="btn btn-info" onclick="update(this);">Edit</button></td>
 	    						<td style="text-align: center; vertical-align: middle;">
-	    							<a th:href="'/delete?id=' + ${per.id}"><button type="submit" class="btn btn-danger">Delete</button></a>
+	    							<a th:href="'/delete?id=' + ${per.id}"><button type="button" class="btn btn-danger">Delete</button></a>
 	    						</td>
 	    					</tr>
 	    				</th:block>
@@ -104,5 +138,18 @@
     	<script src="js/popper.min.js"></script>
     	<script src="js/bootstrap.min.js"></script>
 		
+		<script>
+			function update(button) {
+				var $item = $(button).closest("tr");
+				
+				$('#ufirstname').val($item.find("td:nth-child(1)").text());
+				$('#ulastname').val($item.find("td:nth-child(2)").text());
+				$('#uoccupation').val($item.find("td:nth-child(3)").text());
+				$('#uid').val($item.attr('id'));
+
+				$('#updateModal').modal('show');
+				$('#ufirstname').trigger('focus');
+			}
+		</script>
 	</body>
 </html>
