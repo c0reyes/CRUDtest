@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: crudtest-ingress
+  labels:
+    app: crudtest
+spec:
+    rules:
+    - host: crudtest.info
+      http:
+          paths:
+          - path: /
+            backend:
+                serviceName: crudtest-service
+                servicePort: 8080
