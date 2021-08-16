@@ -1,4 +1,4 @@
-package com.example.crudtest.model;
+package com.example.crudtest.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

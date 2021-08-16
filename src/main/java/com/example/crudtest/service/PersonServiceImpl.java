@@ -3,7 +3,7 @@ package com.example.crudtest.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.crudtest.model.Person;
+import com.example.crudtest.entity.Person;
 import com.example.crudtest.repository.PersonRepository;
 
 @Service

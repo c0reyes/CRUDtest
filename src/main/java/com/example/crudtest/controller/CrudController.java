@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.crudtest.model.Person;
+import com.example.crudtest.entity.Person;
 import com.example.crudtest.service.PersonServiceImpl;
 
 @Controller

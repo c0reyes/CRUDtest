@@ -1,6 +1,6 @@
 package com.example.crudtest.service;
 
-import com.example.crudtest.model.Person;
+import com.example.crudtest.entity.Person;
 
 public interface PersonService {
 	Iterable<Person> findAll();
